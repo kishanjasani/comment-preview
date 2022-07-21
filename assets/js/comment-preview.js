@@ -14,6 +14,7 @@
 		// Collect the data to pass along for generating a comment preview.
 		const commentData = {
 			comment: document.getElementById( 'comment' ).value,
+			format: document.querySelector( '[name="comment_format"]:checked' ).value,
 		};
 
 		// Make the request.

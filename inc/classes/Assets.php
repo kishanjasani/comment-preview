@@ -31,7 +31,7 @@ class Assets {
 		 *
 		 * @param array List of post types.
 		 */
-		$post_types = apply_filters( 'comment_preview_allowed_post_types', array( 'post' ) );
+		$post_types = apply_filters( 'comment_preview_allowed_post_types', [ 'post' ] );
 
 		wp_register_script(
 			'comment-preview',
@@ -44,10 +44,10 @@ class Assets {
 		wp_localize_script(
 			'comment-preview',
 			'commentPreviewData',
-			array(
+			[
 				'apiURL' => get_rest_url( null, 'comment_preview/v1/' ),
 				'nonce'  => wp_create_nonce( 'wp_rest' ),
-			)
+			]
 		);
 
 		if ( is_singular( $post_types ) ) {

@@ -34,6 +34,10 @@ class CommentPreview {
 		// Display preview.
 		add_filter( 'comment_form_fields', [ $this, 'comment_form_fields' ], 20 );
 
+		// Add support for markdown.
+		add_filter( 'comment_form_field_comment', [ $this, 'add_markdown_option' ], 20 );
+
+		// Register Rest endpoint for comment preview.
 		add_action( 'rest_api_init', [ $this, 'register_rest_route' ] );
 
 	}
@@ -61,7 +65,7 @@ class CommentPreview {
 	 *
 	 * @return mixed
 	 */
-	public function comment_form_fields( array $comment_fields = array() ) {
+	public function comment_form_fields( array $comment_fields = [] ) {
 
 		ob_start();
 
@@ -88,11 +92,11 @@ class CommentPreview {
 		register_rest_route(
 			'comment_preview/v1',
 			'preview',
-			array(
+			[
 				'methods'             => \WP_REST_Server::CREATABLE,
 				'callback'            => [ $this, 'generate_preview' ],
 				'permission_callback' => '__return_true',
-			)
+			]
 		);
 	}
 
@@ -104,7 +108,7 @@ class CommentPreview {
 	 * @return array Response object.
 	 */
 	public function generate_preview( $request ) {
-		$response = array();
+		$response = [];
 
 		if ( ! empty( $request['author'] ) ) {
 			$response['author'] = esc_html( $request['author'] );
@@ -122,12 +126,16 @@ class CommentPreview {
 			}
 		}
 
-		$response['gravatar'] = get_avatar_url( $user_id, array( 'size' => 50 ) );
+		$response['gravatar'] = get_avatar_url( $user_id, [ 'size' => 50 ] );
 
 		$response['date'] = current_time( get_option( 'date_format' ) . ' \a\t ' . get_option( 'time_format' ) );
 
-		if ( ! empty( $request['comment'] ) ) {
-			$comment = apply_filters( 'pre_comment_content', $request['comment'] );
+		if ( ! empty( $request['comment'] ) && isset( $request['format'] ) ) {
+			if ( 'text' === $request['format'] ) {
+				$comment = wp_kses_data( $request['comment'] );
+			} else {
+				$comment = apply_filters( 'pre_comment_content', $request['comment'] );
+			}
 		} else {
 			$comment = '';
 		}
@@ -135,5 +143,25 @@ class CommentPreview {
 		$response['comment'] = $comment;
 
 		return $response;
+	}
+
+	/**
+	 * Add radio buttons to allow a commenter to format their comment in
+	 * either markdown or plain text.
+	 *
+	 * @param string $fields HTML to output for the comment field.
+	 *
+	 * @return string HTML.
+	 */
+	public function add_markdown_option( $fields ) {
+
+		ob_start();
+
+		// Get template file output.
+		include_once COMMENT_PREVIEW_PATH . 'templates/markdown-option.php';
+
+		$markdown_options = ob_get_clean();
+
+		return $fields . $markdown_options;
 	}
 }
