@@ -1,0 +1,17 @@
+{
+    "name": "kishan/comment-preview",
+    "description": "It will show real comment previews to the users",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "CommentPreview\\Inc\\": "inc/classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kishan Jasani",
+            "email": "kishanjasani007@yahoo.in"
+        }
+    ],
+    "require": {}
+}
