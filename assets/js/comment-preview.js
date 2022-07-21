@@ -5,6 +5,8 @@
 	const previewWrapper = document.getElementById( 'preview-wrapper' );
 	const template = document.getElementById( 'preview-template' );
 
+	document.getElementById( 'cancel-comment-reply-link' ).addEventListener( 'click', clearPreview );
+
 	// Trigger preview button click.
 	previewButton.addEventListener( 'click', () => {
 
@@ -53,4 +55,12 @@
 		// Re-enable the preview button.
 		previewButton.disabled = false;
 	}
+
+	/**
+	 * Clear out the preview wrapper when a reply or cancel link is clicked.
+	 */
+	 function clearPreview() {
+		previewWrapper.innerHTML = '';
+	}
+
 } )( commentPreviewData );

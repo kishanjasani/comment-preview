@@ -25,7 +25,7 @@ class Assets {
 	 * Enqueue scripts to load comment preview.
 	 */
 	public function enqueue_scripts() {
-		error_log( 'hello' );
+
 		/**
 		 * Filter to enable comment preview on custom post types.
 		 *
