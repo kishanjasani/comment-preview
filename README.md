@@ -19,14 +19,17 @@ The plugin will show real comment previews to the users
 
 #### Activate jetpack's markdown for comments settings.
 
-![Activate jetpack markdown for comment setting](https://prnt.sc/2ZppEqH6Z6UH)
+![Activate jetpack markdown for comment setting](https://user-images.githubusercontent.com/25550562/180242598-8b6fe11a-6864-41b1-9663-ea7302945a36.png)
+
 
 #### Activate comment preview plugin.
-![Activate comment preview plugin](https://prnt.sc/1EiIah7z-389)
+
+![Activate comment preview plugin](https://user-images.githubusercontent.com/25550562/180242868-dc262684-8151-456c-9944-a62550164044.png)
 
 #### Comment form.
 
-![Comment's form and preview of comment](https://prnt.sc/5pAJYHEnaO_p)
+![Comment's form and preview of comment](https://user-images.githubusercontent.com/25550562/180243187-f2960ce6-7347-4c8b-9c40-563e51e77aca.png)
+
 
 ## Want to add markdown support for your custom post type?
 You can use `comment_preview_allowed_post_types` filter to add ustom post type support.
