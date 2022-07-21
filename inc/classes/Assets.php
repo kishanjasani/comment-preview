@@ -36,7 +36,7 @@ class Assets {
 		wp_register_script(
 			'comment-preview',
 			COMMENT_PREVIEW_URL . '/assets/js/comment-preview.js',
-			array(),
+			[],
 			filemtime( COMMENT_PREVIEW_PATH . '/assets/js/comment-preview.js' ),
 			true
 		);
@@ -45,7 +45,7 @@ class Assets {
 			'comment-preview',
 			'commentPreviewData',
 			array(
-				'apiURL' => get_rest_url( null, 'wp_comment_preview/v1/' ),
+				'apiURL' => get_rest_url( null, 'comment_preview/v1/' ),
 				'nonce'  => wp_create_nonce( 'wp_rest' ),
 			)
 		);
