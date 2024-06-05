@@ -1,5 +1,5 @@
 {
-    "name": "kishan/comment-preview",
+    "name": "kishanjasani/comment-preview",
     "description": "It will show real comment previews to the users",
     "type": "wordpress-plugin",
     "autoload": {
