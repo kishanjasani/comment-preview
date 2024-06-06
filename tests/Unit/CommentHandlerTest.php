@@ -63,11 +63,11 @@ class CommentHandlerTest extends AbstractUnitTestcase {
 	public function testGeneratePreview() {
 		$commentHandler = new CommentHandler();
 
-        $request = [
-            'author'  => 'John Doe',
-            'comment' => 'This is a comment.',
-            'format'  => 'text'
-        ];
+		$request = [
+			'author'  => 'John Doe',
+			'comment' => 'This is a comment.',
+			'format'  => 'text'
+		];
 
 		Functions\expect('esc_html')
 			->once()
