@@ -2,35 +2,22 @@
 /**
  * Assets for Comment Preview.
  *
- * @package CommentPreview
+ * @package CommentPreview\Inc
  */
 
 namespace CommentPreview\Inc;
 
 /**
- * Assets.
+ * Assets class.
  *
  * @package CommentPreview\Inc
  */
 class Assets {
 
 	/**
-	 * Class constructor.
-	 */
-	public function __construct() {
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-	}
-
-	/**
 	 * Enqueue scripts to load comment preview.
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * Filter to enable comment preview on custom post types.
-		 *
-		 * @param array List of post types.
-		 */
 		$post_types = apply_filters( 'comment_preview_allowed_post_types', [ 'post' ] );
 
 		wp_register_script(
