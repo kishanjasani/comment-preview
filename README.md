@@ -14,6 +14,7 @@ The plugin will show real comment previews to the users
 
 * PHP Requires: 7.0
 * WordPress Requires at least: 4.7
+* Jetpack Plugin to Render proper markupp
 
 ## Steps to configure this plugin in your site:
 
