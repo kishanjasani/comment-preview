@@ -57,8 +57,45 @@ add_filter( 'comment_preview_allowed_post_types', function( $post_type ) {
 **During development**
 
 Clone the repo and run
+
 ```bash
 cd comment-preview
 composer install
 composer dump-autoload
 ```
+
+Or
+
+If you have WordPress boilerplate with Composer, just add this to repository object and inside the require dependency.
+
+```bash
+"repositories": [
+	{
+		"type": "vcs",
+		"url": "git@github.com:kishanjasani/comment-preview.git"
+	}
+]
+
+"require": {
+	"kishanjasani/comment-preview": "dev-main"
+}
+```
+
+And run this composer command in terminal
+
+```bash
+composer update
+```
+
+Now, you should see plugin on the plugin page in WordPress dashboard.
+
+## Unit Test
+To run unit test you need to manually clone the repo inside the plugin directory and run these commands.
+
+```bash
+composer install
+
+./vendor/bin/phpunit
+```
+
+Happy Coding!😊
